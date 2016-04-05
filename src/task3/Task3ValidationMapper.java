@@ -1,26 +1,27 @@
-package task6;
-
+package task3;
 import java.io.IOException;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class ANSValidationMapper extends Mapper<LongWritable, Text, LongWritable, Text> {
+public class Task3ValidationMapper extends Mapper<LongWritable, Text, LongWritable, Text> {
+
 	@Override
 	protected void map(LongWritable key, Text value, Mapper<LongWritable, Text, LongWritable, Text>.Context context)
 			throws IOException, InterruptedException {
-		if(isValid(value.toString())){
+		if (isValid(value.toString())) {
 			context.write(key, value);
 		}
 	}
-	// Check if all the columns are present
-	private boolean isValid(String line){
+
+	private boolean isValid(String line) {
 		String[] parts = line.split(",");
-		if (parts.length==27){
+		if (parts.length == 27) {
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
+
 }

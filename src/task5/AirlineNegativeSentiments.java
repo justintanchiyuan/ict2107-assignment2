@@ -14,6 +14,7 @@ import org.apache.hadoop.mapreduce.lib.chain.ChainMapper;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
+
 /**
  * 
  * This set of driver, mappers and reducer is to answer the question of:
@@ -28,8 +29,8 @@ public class AirlineNegativeSentiments {
 		job.setJarByClass(AirlineNegativeSentiments.class); //Set the main for the jar file of this job
 		//Set the input/output format and path
 		Path inPath = new Path("hdfs://localhost:9000/user/phamvanvung/airline/input/");
-		Path outPath = new Path("hdfs://localhost:9000/user/phamvanvung/airline/output/"+ 
-		new Date().getTime());//Output results of executions to different folders  
+		Path outPath = new Path("hdfs://localhost:9000/user/phamvanvung/airline/output/");
+		outPath.getFileSystem(conf).delete(outPath, true);
 		
 		//Create configuration for each mapper, specifying false prevents the default configuration from loading
 		Configuration validationConf = new Configuration(false);
@@ -50,7 +51,8 @@ public class AirlineNegativeSentiments {
 		FileInputFormat.addInputPath(job, inPath); //Ensure input files can be processed by mappers
 		FileOutputFormat.setOutputPath(job, outPath); //Ensure output files can be processed reducers
 		
-		System.exit(job.waitForCompletion(true)?0:1); //Exit once job execution is completed
+		job.waitForCompletion(true);
+		//System.exit(job.waitForCompletion(true)?0:1); //Exit once job execution is completed
 	}
 
 }
