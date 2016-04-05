@@ -380,12 +380,88 @@ public class GUI extends JFrame {
 		});
 
 		JButton btnTask_8 = new JButton("Task 9");
+		btnTask_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					task9.TaskExtra.main(null);
+					readOutput("Top 3 airlines with luggage issues");
+
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				;
+
+			}
+
+			private void readOutput(String title) {
+				try {
+					ProcessBuilder builder = new ProcessBuilder("/usr/local/hadoop-2.6.0/bin/hadoop", "fs", "-cat",
+							"/user/phamvanvung/airline/output/part-r-00000");
+					builder.redirectErrorStream(true);
+					Process process = builder.start();
+					InputStream is = process.getInputStream();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
+					String line = null;
+					String output = "";
+					output += title + "\n\n";
+					while ((line = reader.readLine()) != null) {
+						output += line + "\n";
+						System.out.println(line);
+					}
+
+					textArea.setText(output);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		
+		JButton btnTask_9 = new JButton("Task 10");
+		btnTask_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					task10.AirlineNegativeSentiment.main(null);
+					readOutput("Average trust level of each countries the airline flies");
+
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				;
+
+			}
+
+			private void readOutput(String title) {
+				try {
+					ProcessBuilder builder = new ProcessBuilder("/usr/local/hadoop-2.6.0/bin/hadoop", "fs", "-cat",
+							"/user/phamvanvung/airline/output/part-r-00000");
+					builder.redirectErrorStream(true);
+					Process process = builder.start();
+					InputStream is = process.getInputStream();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
+					String line = null;
+					String output = "";
+					output += title + "\n\n";
+					while ((line = reader.readLine()) != null) {
+						output += line + "\n";
+						System.out.println(line);
+					}
+
+					textArea.setText(output);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 		
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(btnTask_3)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -397,11 +473,11 @@ public class GUI extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnTask)
 					.addGap(11))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+					.addComponent(scrollPane)
 					.addContainerGap())
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(btnTask_1)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
@@ -410,7 +486,11 @@ public class GUI extends JFrame {
 					.addComponent(btnTask_7)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnTask_8)
-					.addContainerGap(78, Short.MAX_VALUE))
+					.addContainerGap(88, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnTask_9)
+					.addContainerGap(311, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -427,7 +507,9 @@ public class GUI extends JFrame {
 						.addComponent(btnTask_2)
 						.addComponent(btnTask_7)
 						.addComponent(btnTask_8))
-					.addGap(48)
+					.addGap(5)
+					.addComponent(btnTask_9)
+					.addGap(18)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
