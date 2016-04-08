@@ -96,13 +96,13 @@ public class Task8Mapper extends Mapper<Text, Text, Text, Text> {
 		double d = 0.0d;
 		for (String word : sentenceList) {
 			// total up the words
-			d += retrieve(word.toLowerCase());
+			d += extract(word.toLowerCase());
 		}
 		return rating(d);
 	}
 	
 	//Retrieve word sentimental score
-	public Double retrieve(String word)
+	public Double extract(String word)
 	{
 	   Double total = new Double(0);
 	    if(dictionary.get(word+"#n") != null)
