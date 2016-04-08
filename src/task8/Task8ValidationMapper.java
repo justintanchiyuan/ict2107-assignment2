@@ -6,7 +6,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class Task8Select extends Mapper<LongWritable, Text, Text, Text> {
+public class Task8ValidationMapper extends Mapper<LongWritable, Text, Text, Text> {
 	ArrayList<String> tweetList = new ArrayList<String>();
 	
 	@Override
