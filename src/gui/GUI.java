@@ -57,7 +57,7 @@ public class GUI extends JFrame {
 	 */
 	public GUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 438, 364);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -423,7 +423,7 @@ public class GUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					task10.AirlineNegativeSentiment.main(null);
-					readOutput("Average trust level of each countries the airline flies");
+					readOutput("Average trust level of each countries the airline flights");
 
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
@@ -463,34 +463,29 @@ public class GUI extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(btnTask_3)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnTask_4)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnTask_5)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnTask_6)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnTask)
-					.addGap(11))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(scrollPane)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(btnTask_3)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnTask_4)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnTask_5)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnTask_6)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnTask, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(btnTask_1)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnTask_2)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnTask_7)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnTask_8)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnTask_9))
+						.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE))
 					.addContainerGap())
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnTask_1)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnTask_2)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnTask_7)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnTask_8)
-					.addContainerGap(88, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnTask_9)
-					.addContainerGap(311, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -506,11 +501,10 @@ public class GUI extends JFrame {
 						.addComponent(btnTask_1)
 						.addComponent(btnTask_2)
 						.addComponent(btnTask_7)
-						.addComponent(btnTask_8))
-					.addGap(5)
-					.addComponent(btnTask_9)
+						.addComponent(btnTask_8)
+						.addComponent(btnTask_9))
 					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		
