@@ -54,8 +54,6 @@ public class AirlineNegativeSentiments {
 		job.setOutputKeyClass(Text.class); // Set the output key format
 		job.setOutputValueClass(Text.class); // Set the output data format
 
-		job.setNumReduceTasks(1); // Set only one instance of reduce task
-
 		FileInputFormat.addInputPath(job, inPath); // Ensure input files can be
 													// processed by mappers
 		FileOutputFormat.setOutputPath(job, outPath); // Ensure output files can
