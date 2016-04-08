@@ -31,10 +31,11 @@ public class AirlineNegativeSentiments {
 															// this job
 		// Set the input/output format and path
 		Path inPath = new Path("hdfs://localhost:9000/user/phamvanvung/airline/input");
-		if(args != null && args.length > 0){
-		if(args[0].equals("actual")){
-		inPath = new Path("hdfs://localhost:9000/user/phamvanvung/airline/input_twitter_airline/");
-		}}
+		if (args != null && args.length > 0) {
+			if (args[0].equals("actual")) {
+				inPath = new Path("hdfs://localhost:9000/user/phamvanvung/airline/input_twitter_airline/");
+			}
+		}
 		Path outPath = new Path("hdfs://localhost:9000/user/phamvanvung/airline/output/");
 		outPath.getFileSystem(conf).delete(outPath, true);
 
@@ -46,13 +47,15 @@ public class AirlineNegativeSentiments {
 		// Add the ANSValidationMapper and ANSMapper class for chain mapper
 		ChainMapper.addMapper(job, ANSValidationMapper.class, LongWritable.class, Text.class, LongWritable.class,
 				Text.class, validationConf);
-		ChainMapper.addMapper(job, ANSMapper.class, LongWritable.class, Text.class, Text.class, Text.class, ansConf);
+		ChainMapper.addMapper(job, ANSMapper.class, LongWritable.class, Text.class, Text.class, IntWritable.class,
+				ansConf);
 
 		job.setMapperClass(ChainMapper.class); // Set the mapper class
 		job.setReducerClass(ANSReducer.class); // Set the reducer class
 
 		job.setOutputKeyClass(Text.class); // Set the output key format
-		job.setOutputValueClass(Text.class); // Set the output data format
+		job.setOutputValueClass(IntWritable.class); // Set the output data
+													// format
 
 		FileInputFormat.addInputPath(job, inPath); // Ensure input files can be
 													// processed by mappers
@@ -60,9 +63,6 @@ public class AirlineNegativeSentiments {
 														// be processed reducers
 
 		job.waitForCompletion(true);
-		//System.exit(job.waitForCompletion(true) ? 0 : 1); // Exit once job
-															// execution is
-															// completed
 	}
 
 }

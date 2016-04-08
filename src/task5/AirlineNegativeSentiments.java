@@ -47,6 +47,8 @@ public class AirlineNegativeSentiments {
 		job.setMapperClass(ChainMapper.class); //Set the mapper class		
 		job.setReducerClass(ANSReducer.class); //Set the reducer class
 		
+		job.setNumReduceTasks(1); //Set number of reduce task
+		
 		job.setOutputKeyClass(Text.class); //Set the output key format
 		job.setOutputValueClass(DoubleWritable.class); //Set the output data format
 		
