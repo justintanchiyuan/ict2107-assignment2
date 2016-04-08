@@ -233,7 +233,13 @@ public class GUI extends JFrame {
 		btnTask_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					task2.Task2.main(null);
+					if (rdbtnActualDataset.isSelected()) {
+						String[] input = new String[1];
+						input[0] = "actual";
+						task2.Task2.main(input);
+					} else {
+						task2.Task2.main(null);
+					}
 					readOutput("Discover the people from which country complain the most for the airline services?");
 
 				} catch (Exception e1) {
@@ -272,7 +278,13 @@ public class GUI extends JFrame {
 		btnTask_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					task3.Task3.main(null);
+					if (rdbtnActualDataset.isSelected()) {
+						String[] input = new String[1];
+						input[0] = "actual";
+						task3.Task3.main(input);
+					} else {
+						task3.Task3.main(null);
+					}
 					readOutput("How many people give the negative comments on the airline by giving the “badflight” or “CSProblem” negative reason for each country?");
 
 				} catch (Exception e1) {
