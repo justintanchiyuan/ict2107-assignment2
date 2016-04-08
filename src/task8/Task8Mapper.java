@@ -32,7 +32,7 @@ public class Task8Mapper extends Mapper<Text, Text, Text, Text> {
 						throw new IllegalArgumentException("Incorrect format in file");
 					}
 
-					// score = PosS - NegS
+					// Score = Pos Score - Neg Score
 					Double score = Double.parseDouble(data[2]) - Double.parseDouble(data[3]);
 
 					// Get all synset terms
