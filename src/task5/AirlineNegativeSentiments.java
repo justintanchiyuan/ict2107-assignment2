@@ -28,7 +28,11 @@ public class AirlineNegativeSentiments {
 		Job job = Job.getInstance(conf, "AirlineNegativeSentiments");
 		job.setJarByClass(AirlineNegativeSentiments.class); //Set the main for the jar file of this job
 		//Set the input/output format and path
-		Path inPath = new Path("hdfs://localhost:9000/user/phamvanvung/airline/input/");
+		Path inPath = new Path("hdfs://localhost:9000/user/phamvanvung/airline/input");
+		if(args != null && args.length > 0){
+		if(args[0].equals("actual")){
+		inPath = new Path("hdfs://localhost:9000/user/phamvanvung/airline/input_twitter_airline/");
+		}}
 		Path outPath = new Path("hdfs://localhost:9000/user/phamvanvung/airline/output/");
 		outPath.getFileSystem(conf).delete(outPath, true);
 		
