@@ -23,7 +23,7 @@ public class Task8Analysis {
 		job.addCacheFile(new URI("hdfs://localhost:9000/user/phamvanvung/airline/input/SentiWordNet_3.0.0_20130122.txt"));
 		
 		Configuration task8selectConf = new Configuration(false);
-		ChainMapper.addMapper(job, Task8Select.class, LongWritable.class, Text.class, Text.class, Text.class, task8selectConf);
+		ChainMapper.addMapper(job, Task8ValidationMapper.class, LongWritable.class, Text.class, Text.class, Text.class, task8selectConf);
 		
 		Configuration task8mapperConf = new Configuration(false);
 		ChainMapper.addMapper(job, Task8Mapper.class, Text.class, Text.class, Text.class, Text.class, task8mapperConf);		
